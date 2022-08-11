@@ -222,6 +222,10 @@ window.addEventListener('DOMContentLoaded', () => {
 		'menu__item'
 	);
 	div3.render();
+});
+
+
+	////////////////////////////////////////////////////////
 
 	// new MenuCard(
 	// 	"img/tabs/vegy.jpg",
@@ -250,10 +254,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	// 	21,
 	// 	'.menu .container'
 	// ).render();
-});
-
-
-	////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
 
 // // меняем цвет кнопки
 // const btnWhite = document.querySelector('.btn_white');
@@ -337,3 +338,4 @@ window.addEventListener('DOMContentLoaded', () => {
 	// 	21,
 	// 	'.menu .container'
 	// ).render();
+	
