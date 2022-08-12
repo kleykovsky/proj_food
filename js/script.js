@@ -176,6 +176,10 @@ window.addEventListener('DOMContentLoaded', () => {
 				this.classes.forEach(className => element.classList.add(className));
 			}
 			element.innerHTML = `
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3553265e7f3aa7a11db89af0f71c193851dd6ca9
 				<img src=${this.src} alt=${this.alt}>
 				<h3 class="menu__item-subtitle">${this.title}</h3>
 				<div class="menu__item-descr">${this.descr}</div>
