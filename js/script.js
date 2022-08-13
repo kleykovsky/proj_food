@@ -176,7 +176,6 @@ window.addEventListener('DOMContentLoaded', () => {
 				this.classes.forEach(className => element.classList.add(className));
 			}
 			element.innerHTML = `
-
 				<img src=${this.src} alt=${this.alt}>
 				<h3 class="menu__item-subtitle">${this.title}</h3>
 				<div class="menu__item-descr">${this.descr}</div>
@@ -338,4 +337,4 @@ window.addEventListener('DOMContentLoaded', () => {
 	// 	21,
 	// 	'.menu .container'
 	// ).render();
-	
+	///
