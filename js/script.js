@@ -176,6 +176,7 @@ window.addEventListener('DOMContentLoaded', () => {
 				this.classes.forEach(className => element.classList.add(className));
 			}
 			element.innerHTML = `
+
 				<img src=${this.src} alt=${this.alt}>
 				<h3 class="menu__item-subtitle">${this.title}</h3>
 				<div class="menu__item-descr">${this.descr}</div>
@@ -221,9 +222,39 @@ window.addEventListener('DOMContentLoaded', () => {
 		'menu__item'
 	);
 	div3.render();
+
+	//Forms
+		const form = document.querySelectorAll('form');
+
+		const message = {
+			loading: 'Loading...',
+			success: 'Thanks! We will call you back...',
+			failure: 'Something went wrong'
+		};
+
+	function postData(form) {
+		form.addEventListener('submit', (event) => {
+			event.preventDefault();
+
+			const statusMessage = document.createElement('div');
+
+			//ok
+
+			const request = XMLHttpRequest();
+			request.open('POST', 'server.php');
+
+			request.setRuquestHeader('COntent-type', 'multipart/form-data');
+			const formData = new FormData(form);
+
+			request.send(formData);
+			request.addEventListener('load', () => {
+				if (request.status === 200) {
+					console.log(request.response);
+				}
+			});
+		});
+	}
 });
-
-
 	////////////////////////////////////////////////////////
 
 	// new MenuCard(
@@ -337,3 +368,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	// 	21,
 	// 	'.menu .container'
 	// ).render();
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 3433fd4df3e5b824adefc6ab3842bbb7cd43f0f6
