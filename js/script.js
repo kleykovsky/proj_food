@@ -232,13 +232,18 @@ window.addEventListener('DOMContentLoaded', () => {
 			failure: 'Something went wrong'
 		};
 
+		form.forEach(item => {
+			postData(item);
+		});
+
 	function postData(form) {
 		form.addEventListener('submit', (event) => {
 			event.preventDefault();
 
 			const statusMessage = document.createElement('div');
-
-			//ok
+			statusMessage.classList.add('status');
+			statusMessage.textContent = message.loading;
+			form.append(statusMessage);
 
 			const request = XMLHttpRequest();
 			request.open('POST', 'server.php');
@@ -250,6 +255,9 @@ window.addEventListener('DOMContentLoaded', () => {
 			request.addEventListener('load', () => {
 				if (request.status === 200) {
 					console.log(request.response);
+					statusMessage.textContent = message.success;
+				} else {
+					statusMessage.textContent = message.failure;
 				}
 			});
 		});
@@ -368,7 +376,3 @@ window.addEventListener('DOMContentLoaded', () => {
 	// 	21,
 	// 	'.menu .container'
 	// ).render();
-<<<<<<< HEAD
-=======
-	
->>>>>>> 3433fd4df3e5b824adefc6ab3842bbb7cd43f0f6
