@@ -245,7 +245,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			statusMessage.textContent = message.loading;
 			form.append(statusMessage);
 
-			const request = XMLHttpRequest();
+			const request = new XMLHttpRequest();
 			request.open('POST', 'server.php');
 
 			request.setRequestHeader('Content-type', 'multipart/form-data');
