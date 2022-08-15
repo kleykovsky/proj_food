@@ -39,7 +39,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	//////////////////////////////////Timer
 
-	const deadLine = '2022-08-15';  ///
+	const deadLine = '2022-08-16';  ///
 	function getTimeReamening(endtime) {
 		let  days, hours, minutes, seconds;
 		const t = Date.parse(endtime) - Date.parse(new Date());
@@ -104,7 +104,9 @@ window.addEventListener('DOMContentLoaded', () => {
 	// const modalCloseBtn = document.querySelector('[data-close]');
 
 	function openModal () {
-		modal.classList.toggle('show');
+		modal.classList.add('show');
+		modal.classList.remove('hide');
+		// modal.classList.toggle('show');
 		document.body.style.overflow = 'hidden';
 		// clearInterval(modalTimerId);
 	}
@@ -113,7 +115,9 @@ window.addEventListener('DOMContentLoaded', () => {
 	});
 
 	function closeModal() {
-		modal.classList.toggle('show');
+		modal.classList.add('hide');
+		modal.classList.remove('show');
+		// modal.classList.toggle('show');
 		document.body.style.overflow = '';
 	}
 	// modalCloseBtn.addEventListener('click', closeModal);
@@ -137,7 +141,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		}
 	});
 
-	const modalTimerId = setTimeout(openModal, 50000); //Появление модалки через 5 сек.
+	const modalTimerId = setTimeout(openModal, 300000); //Появление модалки через 5 сек.
 	
 	function showModalByScroll() {
 		if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight) {
@@ -262,7 +266,7 @@ window.addEventListener('DOMContentLoaded', () => {
 					console.log(request.response);
 					showThanksModal(message.success);
 					form.reset();
-						statusMessage.remove();
+					statusMessage.remove();
 				} else {
 					showThanksModal(message.failure);
 				}
@@ -270,14 +274,16 @@ window.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
-	function showThanksModal() {
+	//спинер с диалогом
+
+	function showThanksModal(message) {
 		const prevModalDialog = document.querySelector('.modal__dialog');
 
 		prevModalDialog.classList.add('hide');
 		openModal();
 
 		const thanksModal = document.createElement('div');
-		thanksModal.classList.add('modal_dialog');
+		thanksModal.classList.add('modal__dialog');
 		thanksModal.innerHTML = `
 			<div class="modal__content">
 				<div class="modal__close">×</div>
@@ -291,8 +297,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			prevModalDialog.classList.add('show');
 			prevModalDialog.classList.remove('hide');
 			closeModal();
-
-		}, 4000);
+		}, 2000);
 	}
 });
 	////////////////////////////////////////////////////////
