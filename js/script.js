@@ -298,7 +298,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
-	//спинер с диалогом
+	//спинер + диалогом
 
 	function showThanksModal(message) {
 		const prevModalDialog = document.querySelector('.modal__dialog');
