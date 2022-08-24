@@ -1,0 +1,22 @@
+{
+  "name": "proj_food",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kleykovsky/proj_food.git"
+  },
+  "author": "Kleystorin.A",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kleykovsky/proj_food/issues"
+  },
+  "homepage": "https://github.com/kleykovsky/proj_food#readme",
+  "devDependencies": {
+    "json-server": "^0.17.0"
+  }
+}

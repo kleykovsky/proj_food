@@ -324,8 +324,6 @@ window.addEventListener('DOMContentLoaded', () => {
 	}
 });
 
-
-
 	////////////////////////////////////////////////////////
 
 	// new MenuCard(
