@@ -328,6 +328,8 @@ window.addEventListener('DOMContentLoaded', () => {
 		.then(res => console.log(res));
 });
 
+
+
 	////////////////////////////////////////////////////////
 
 	// new MenuCard(
