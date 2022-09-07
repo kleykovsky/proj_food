@@ -506,7 +506,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			const slideTo = e.target.getAttribute('data-slide-to');
 
 			slideIndex = slideTo;
-			offset === +width.slice(0, width.length - 2) * (slideTo - 1);
+			offset = +width.slice(0, width.length - 2) * (slideTo - 1);
 			slidesField.style.transform = `translateX(-${offset}px)`;
 
 			if(slides.length < 10) {
