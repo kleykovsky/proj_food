@@ -10,19 +10,20 @@
     margin-right: 15%;
     margin-left: 15%;
     list-style: none;
+    padding: 8px;
+
 }
 .dot {
     box-sizing: content-box;
     flex: 0 1 auto;
     width: 30px;
-    height: 6px;
+    height: 10px;
     margin-right: 3px;
     margin-left: 3px;
     cursor: pointer;
-    background-color: #fff;
-    background-clip: padding-box;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
+    background-color: greenyellow;
+    border-radius: 5px;
     opacity: .5;
     transition: opacity .6s ease;
 }
+
