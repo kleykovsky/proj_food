@@ -500,7 +500,6 @@ window.addEventListener('DOMContentLoaded', () => {
 		});
 	});
 
-
 	//example #1(journal)
 
 	// showSlides(slideIndex);
