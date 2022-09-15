@@ -518,12 +518,12 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	const result = document.querySelector('.calculating__result span');
 
-	let sex,height, weight, age, ratio;
+	let sex, height, weight, age, ratio;
 
 	if (localStorage.getItem('sex')) {
 		sex = localStorage.getItem('sex');
 	} else {
-		sex = 'famale';
+		sex = 'female';
 		localStorage.setItem('sex', 'female');
 	}
 	if (localStorage.getItem('ratio')) {
@@ -535,8 +535,18 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	function initLocalSettings(selector, activeClass) {
 		const elements = document.querySelector(selector);
-
+		elements.forEach(elem => {
+			elem.classList.remove(activeClass);
+			if (elem.getAttribute('id') === localStorage.getItem('sex')) {
+				elem.classList.add(activeClass);
+			}
+			if (elem.getAttribute('data-ratio') === localStorage.getItem('ratio')) {
+				elem.classList.add(activeClass);
+			}
+		});
 	}
+	initLocalSettings('#gender div', 'calculating__choose-item_active');
+	initLocalSettings('.calculating__choose_big div', 'calculating__choose-item_active');
 
 	function calcTotal() {
 		if (!sex || !height || !weight || !age || !ratio) {
@@ -551,8 +561,8 @@ window.addEventListener('DOMContentLoaded', () => {
 	}
 	calcTotal();
 
-	function getStaticInformation(parentSelector, activeClass) {
-		const elements = document.querySelectorAll(`${parentSelector} div`);
+	function getStaticInformation(selector, activeClass) {
+		const elements = document.querySelectorAll(selector);
 
 		elements.forEach(elem => {
 			elem.addEventListener('click', (e) => {
@@ -575,8 +585,8 @@ window.addEventListener('DOMContentLoaded', () => {
 			});
 		});
 	}
-	getStaticInformation('#gender', 'calculating__choose-item_active');
-	getStaticInformation('.calculating__choose_big', 'calculating__choose-item_active');
+	getStaticInformation('#gender div', 'calculating__choose-item_active');
+	getStaticInformation('.calculating__choose_big div', 'calculating__choose-item_active');
 
 	function getDynamicInformation(selector) {
 		const input = document.querySelector(selector);
