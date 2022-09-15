@@ -3,8 +3,8 @@ window.addEventListener('DOMContentLoaded', () => {
 	//////////////////////Tabs
 
 	const tabs = document.querySelectorAll('.tabheader__item'),
-				 tabsContent = document.querySelectorAll('.tabcontent'),
-				 tabsParent = document.querySelector('.tabheader__items');
+		tabsContent = document.querySelectorAll('.tabcontent'),
+		tabsParent = document.querySelector('.tabheader__items');
 
 	function hideTabContent() {	  //скрываем контент(табы)
 		tabsContent.forEach(item => {
@@ -16,16 +16,17 @@ window.addEventListener('DOMContentLoaded', () => {
 			item.classList.remove('tabheader__item_active');
 		});
 	}
+
 	function showTabContent(i = 0) {	//добавляем класс активности
 		tabsContent[i].classList.add('show', 'fade');
 		tabsContent[i].classList.remove('hide');
 		tabs[i].classList.add('tabheader__item_active');
 	}
-	
+
 	hideTabContent();
 	showTabContent();
-	
-	tabsParent.addEventListener('click',(event) => {	//выбор табов по клику с помощью перебора табов
+
+	tabsParent.addEventListener('click', (event) => {	//выбор табов по клику с помощью перебора табов
 		const target = event.target;
 		if (target && target.classList.contains('tabheader__item')) {
 			tabs.forEach((item, i) => {
@@ -41,27 +42,27 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	const deadLine = '2022-08-17';  ///
 	function getTimeReamening(endtime) {
-		let  days, hours, minutes, seconds;
+		let days, hours, minutes, seconds;
 		const t = Date.parse(endtime) - Date.parse(new Date());
 
-		if(t <= 0) {
+		if (t <= 0) {
 			days = 0;
 			hours = 0;
 			minutes = 0;
 			seconds = 0;
 		} else {
-			days = Math.floor(t / (1000 * 3600 *  24));
+			days = Math.floor(t / (1000 * 3600 * 24));
 			hours = Math.floor((t / (1000 * 3600) % 24));
 			minutes = Math.floor((t / 1000 / 60) % 60);
 			seconds = Math.floor((t / 1000) % 60);
 		}
-			
-	return {
-		'total': t,
-		'days': days,
-		'hours': hours,
-		'minutes': minutes,
-		'second': seconds
+
+		return {
+			'total': t,
+			'days': days,
+			'hours': hours,
+			'minutes': minutes,
+			'second': seconds
 		};
 	}
 
@@ -82,6 +83,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		const timeInterval = setInterval(updateClock, 1000);
 
 		updateClock();
+
 		function updateClock() {
 			const t = getTimeReamening(endtime);
 
@@ -95,6 +97,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			}
 		}
 	}
+
 	setClock('.timer', deadLine);
 
 	///////////////////Modal window
@@ -104,13 +107,14 @@ window.addEventListener('DOMContentLoaded', () => {
 	// const modalCloseBtn = document.querySelector('[data-close]');
 
 	//open modal
-	function openModal () {
+	function openModal() {
 		modal.classList.add('show');
 		modal.classList.remove('hide');
 		// modal.classList.toggle('show');
 		document.body.style.overflow = 'hidden';
 		// clearInterval(modalTimerId);
 	}
+
 	modalTrigger.forEach(btn => {
 		btn.addEventListener('click', openModal);
 	});
@@ -145,13 +149,14 @@ window.addEventListener('DOMContentLoaded', () => {
 	});
 
 	// const modalTimerId = setTimeout(openModal, 300000); //Появление модалки через 5 сек.
-	
+
 	function showModalByScroll() {
 		if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight) {
 			openModal();
 			window.removeEventListener('scroll', showModalByScroll);
 		}
 	}
+
 	window.addEventListener('scroll', showModalByScroll);
 
 
@@ -169,9 +174,11 @@ window.addEventListener('DOMContentLoaded', () => {
 			this.transfer = 10500;
 			this.changeToUZS();
 		}
+
 		changeToUZS() {
 			this.price = this.price * this.transfer;
 		}
+
 		render() {
 			const element = document.createElement('div');
 			if (this.classes.length === 0) {
@@ -194,9 +201,10 @@ window.addEventListener('DOMContentLoaded', () => {
 			this.parent.append(element);
 		}
 	}
+
 	async function getResource(url) {
 		let res = await fetch(url);
-		if(!res.ok) {
+		if (!res.ok) {
 			throw new Error(`Could not fetch ${url}, status: ${res.status}`);
 		}
 		return await res.json();
@@ -206,7 +214,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	getResource('http://localhost:3000/menu')
 		.then(data => {
 			data.forEach(({img, altimg, title, descr, price}) => {
-			new MenuCard(img, altimg, title, descr, price, ".menu .container").render();
+				new MenuCard(img, altimg, title, descr, price, ".menu .container").render();
 			});
 		});
 
@@ -218,7 +226,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	// 			new MenuCard(img, altimg, title, descr, price, ".menu .container").render();
 	// 		});
 	// 	});
-	
+
 	//exampl #2
 	// getResource('http://localhost:3000/menu')
 	// 	.then(data =>  {
@@ -283,29 +291,29 @@ window.addEventListener('DOMContentLoaded', () => {
 //////////////////////////////////////////////////////////////////////////////////////
 
 	//Forms
-		const form = document.querySelectorAll('form');
+	const form = document.querySelectorAll('form');
 
-		const message = {
-			loading: 'img/form/spinner.svg',
-			success: 'Спасибо! В ближайшее время мы вам перезвоним!',
-			failure: 'Что то пошло не так...'
-		};
+	const message = {
+		loading: 'img/form/spinner.svg',
+		success: 'Спасибо! В ближайшее время мы вам перезвоним!',
+		failure: 'Что то пошло не так...'
+	};
 
-		form.forEach(item => {
-			binPostData(item);
+	form.forEach(item => {
+		binPostData(item);
+	});
+
+	const postData = async (url, data) => {
+		const res = await fetch(url, {
+			method: 'POST',
+			headers: {
+				'Content-type': 'application/json',
+			},
+			body: data
 		});
+		return await res.json();
 
-		const postData = async (url, data) => {
-			const res = await fetch(url, {
-				method: 'POST',
-				headers: {
-					'Content-type': 'application/json',
-				},
-				body: data
-			});
-			return await res.json();
-
-		};
+	};
 
 	function binPostData(form) {
 		form.addEventListener('submit', (e) => {
@@ -330,13 +338,13 @@ window.addEventListener('DOMContentLoaded', () => {
 			// const obj = {a: 23, b: 24};
 			// console.log(Object.entries(obj));
 
-				// Fetch request
+			// Fetch request
 			postData('http://localhost:3000/requests', json)
-			.then(data => {
-				console.log(data);
-				showThanksModal(message.success);
-				statusMessage.remove();
-			}).catch(() => {
+				.then(data => {
+					console.log(data);
+					showThanksModal(message.success);
+					statusMessage.remove();
+				}).catch(() => {
 				showThanksModal(message.failure);
 			}).finally(() => {
 				form.reset();
@@ -375,41 +383,41 @@ window.addEventListener('DOMContentLoaded', () => {
 	// 	.then(res => console.log(res));
 
 	// Slider
+	let slideIndex = 1;
+	let offset = 0;
 
-		let slideIndex = 1;
-		let offset = 0;
+	const slides = document.querySelectorAll('.offer__slide'),
+		slider = document.querySelector('.offer__slider'),
+		prev = document.querySelector('.offer__slider-prev'),
+		next = document.querySelector('.offer__slider-next'),
+		total = document.querySelector('#total'),
+		current = document.querySelector('#current'),
+		slidesWrapper = document.querySelector('.offer__slider-wrapper'),
+		slidesField = document.querySelector('.offer__slider-inner'),
+		width = window.getComputedStyle(slidesWrapper).width;
 
-		const slides = document.querySelectorAll('.offer__slide'),
-			  slider = document.querySelector('.offer__slider'),
-			  prev = document.querySelector('.offer__slider-prev'),
-			  next = document.querySelector('.offer__slider-next'),
-			  total = document.querySelector('#total'),
-			  current = document.querySelector('#current'),
-			  slidesWrapper = document.querySelector('.offer__slider-wrapper'),
-			  slidesField = document.querySelector('.offer__slider-inner'),
-			  width = window.getComputedStyle(slidesWrapper).width;
+	if (slides.length < 10) {
+		total.textContent = `0${slides.length}`;
+		current.textContent = `0${slideIndex}`;
+	} else {
+		total.textContent = slides.length;
+		current.textContent = slideIndex;
+	}
 
-		if(slides.length < 10) {
-			total.textContent = `0${slides.length}`;
-			current.textContent = `0${slideIndex}`;
-		} else {
-			total.textContent = slides.length;
-			current.textContent = slideIndex;
-		}
+	// example #2(carousel)
+	slidesField.style.width = 100 * slides.length + '%';
+	slidesField.style.display = 'flex';
+	slidesField.style.transition = '0.8s all';
+	slidesWrapper.style.overflow = 'hidden';
 
-		// example #2(carousel)
-		slidesField.style.width = 100 * slides.length + '%';
-		slidesField.style.display = 'flex';
-		slidesField.style.transition = '0.8s all';
-		slidesWrapper.style.overflow = 'hidden';
+	slides.forEach(slide => {
+		slide.style.width = width;
+	});
 
-		slides.forEach(slide => {
-			slide.style.width = width;
-		});
-
-		slider.style.position = 'relative';
+	slider.style.position = 'relative';
 
 	const arrDots = [];
+
 	function dotsNavigation() {
 		const dots = document.createElement('ol');
 		dots.classList.add('carousel-indicators');
@@ -420,7 +428,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			const dot = document.createElement('li');
 			dot.setAttribute('data-slide-to', i + 1);
 			dot.classList.add('dot');
-			if ( i === 0) {
+			if (i === 0) {
 				dot.style.opacity = 1;
 
 			}
@@ -430,29 +438,23 @@ window.addEventListener('DOMContentLoaded', () => {
 	}
 	dotsNavigation();
 
-
-	function deleteNotDigits() {
-		let str;
-		return +str.replace(/\D/g, '');
-	}
-
 	function buttonNavigationSliders() {
 		// button right
 		next.addEventListener('click', () => {
-			if(offset === deleteNotDigits(width) * (slides.length - 1)){
+			if (offset === deleteNotDigits(width) * (slides.length - 1)) {
 				offset = 0;
 			} else {
 				offset += deleteNotDigits(width);
 			}
 			slidesField.style.transform = `translateX(-${offset}px)`;
 
-			if(slideIndex === slides.length) {
-				slideIndex= 1;
+			if (slideIndex === slides.length) {
+				slideIndex = 1;
 			} else {
-				slideIndex ++;
+				slideIndex++;
 			}
 
-			if(slides.length < 10) {
+			if (slides.length < 10) {
 				current.textContent = `0${slideIndex}`;
 			} else {
 				current.textContent = `slideIndex`;
@@ -463,20 +465,20 @@ window.addEventListener('DOMContentLoaded', () => {
 
 		// button left
 		prev.addEventListener('click', () => {
-			if(offset === 0){
+			if (offset === 0) {
 				offset = deleteNotDigits(width) * (slides.length - 1);
 			} else {
 				offset -= deleteNotDigits(width);
 			}
 			slidesField.style.transform = `translateX(-${offset}px)`;
 
-			if(slideIndex === 1) {
-				slideIndex= slides.length;
+			if (slideIndex === 1) {
+				slideIndex = slides.length;
 			} else {
-				slideIndex --;
+				slideIndex--;
 			}
 
-			if(slides.length < 10) {
+			if (slides.length < 10) {
 				current.textContent = `0${slideIndex}`;
 			} else {
 				current.textContent = slideIndex;
@@ -487,6 +489,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 		});
 	}
+
 	buttonNavigationSliders();
 
 	arrDots.forEach(dot => {
@@ -496,7 +499,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			offset = deleteNotDigits(width) * (slideTo - 1);
 			slidesField.style.transform = `translateX(-${offset}px)`;
 
-			if(slides.length < 10) {
+			if (slides.length < 10) {
 				current.textContent = `0${slideIndex}`;
 			} else {
 				current.textContent = slideIndex;
@@ -506,45 +509,10 @@ window.addEventListener('DOMContentLoaded', () => {
 		});
 	});
 
-	//example #1(journal)
-
-	// showSlides(slideIndex);
-	// if(slides.length < 10) {
-	// 	total.textContent = `0${slides.length}`;
-	// } else {
-	// 	total.textContent = slides.length;
-	// }
-	//
-	// function showSlides(n) {
-	// 	if (n > slides.length) {
-	// 		slideIndex = 1;
-	// 	}
-	// 	if (n < 1) {
-	// 		slideIndex = slides.length;
-	// 	}
-	//
-	// 	slides.forEach((item) => item.style.display = 'none');
-	// 	slides[slideIndex - 1].style.display = 'block';
-	//
-	// 	if (slides.length < 10) {
-	// 		current.textContent =  `0${slideIndex}`;
-	// 	} else {
-	// 		current.textContent =  slideIndex;
-	// 	}
-	// }
-	//
-	// function plusSlides(n) {
-	// 	showSlides(slideIndex += n);
-	// }
-	//
-	// prev.addEventListener('click', () => {
-	// 	plusSlides(-1);
-	// });
-	// next.addEventListener('click', () => {
-	// 	plusSlides(1);
-	// });
+	function deleteNotDigits(str) {
+		return +str.replace(/\D/g, '');
+	}
 });
-
 	////////////////////////////////////////////////////////
 
 	// new MenuCard(
