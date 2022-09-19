@@ -620,6 +620,8 @@ window.addEventListener('DOMContentLoaded', () => {
 	getDynamicInformation('#age');
 
 });
+
+1//
 	////////////////////////////////////////////////////////
 
 	// new MenuCard(
