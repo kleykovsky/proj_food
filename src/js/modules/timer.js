@@ -1,7 +1,6 @@
-function timer() {
+function timer(id, deadLine) {
     //////////////////////////////////Timer
 
-    const deadLine = '2022-10-18';  ///
     function getTimeReamening(endtime) {
         let days, hours, minutes, seconds;
         const t = Date.parse(endtime) - Date.parse(new Date());
@@ -59,6 +58,6 @@ function timer() {
         }
     }
 
-    setClock('.timer', deadLine);
+    setClock(id, deadLine);
 }
 export default timer;

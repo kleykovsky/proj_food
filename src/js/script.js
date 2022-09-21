@@ -1,5 +1,5 @@
 import tabs from './modules/tabs';
-import modal from './modules/modal';
+import modal, {openModal} from './modules/modal';
 import forms from './modules/forms';
 import cards from './modules/cards';
 import slider from './modules/slider';
@@ -7,13 +7,24 @@ import timer from './modules/timer';
 import calculator from './modules/calculator';
 
 window.addEventListener('DOMContentLoaded', () => {
-    modal('[data-modal]', '.modal');
-    timer();
+    const modalTimerId = setTimeout(() => openModal('.modal', modalTimerId), 50000); //Появление модалки через 5 сек.
+
+    modal('[data-modal]', '.modal', modalTimerId);
+    timer('.timer', '2022-10-16');
     cards();
     calculator();
-    forms();
-    slider();
-    tabs();
+    forms('form', modalTimerId);
+    slider({
+        field: '.offer__slider-inner',
+        slide: '.offer__slide',
+        wrapper: '.offer__slider-wrapper',
+        nexArrow: '.offer__slider-next',
+        container: '.offer__slider',
+        prevArrow: '.offer__slider-prev',
+        totalCounter: '#total',
+        currentCounter: '#current',
+    });
+    tabs('.tabheader__item', '.tabcontent', '.tabheader__items', 'tabheader__item_active');
 });
 	////////////////////////////////////////////////////////
 
