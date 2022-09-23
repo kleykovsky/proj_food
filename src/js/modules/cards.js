@@ -1,7 +1,7 @@
 import {getResource} from "../services/services";
 
 function cards() {
-    // Используем классы для карточек
+    // Using Card Classes
 
     class MenuCard {
         constructor(src, altimg, title, descr, price, parentSelector, ...classes) {
@@ -42,8 +42,7 @@ function cards() {
             this.parent.append(element);
         }
     }
-
-    //examle #1
+    //Initial get request
     getResource('http://localhost:3000/menu')
         .then(data => {
             data.forEach(({img, altimg, title, descr, price}) => {
@@ -51,5 +50,4 @@ function cards() {
             });
         });
 }
-
 export default cards;

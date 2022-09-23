@@ -1,6 +1,5 @@
 function timer(id, deadLine) {
-    //////////////////////////////////Timer
-
+    //Timer
     function getTimeReamening(endtime) {
         let days, hours, minutes, seconds;
         const t = Date.parse(endtime) - Date.parse(new Date());

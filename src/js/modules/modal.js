@@ -1,4 +1,4 @@
-//open modal
+    //Open modal
 function openModal(modalSelector, modalTimerId) {
     const modal = document.querySelector(modalSelector);
     modal.classList.add('show');
@@ -10,8 +10,7 @@ function openModal(modalSelector, modalTimerId) {
         clearInterval(modalTimerId);
     }
 }
-
-//close modal
+    //close modal
 function closeModal(modalSelector) {
     const modal = document.querySelector(modalSelector);
     modal.classList.add('hide');
@@ -21,8 +20,7 @@ function closeModal(modalSelector) {
 }
 
 function modal(triggerSelector, modalSelector, modalTimerId) {
-    ///////////////////Modal window
-
+    //Modal window
     const modalTrigger = document.querySelectorAll(triggerSelector);
     const modal = document.querySelector(modalSelector);
     // const modalCloseBtn = document.querySelector('[data-close]');

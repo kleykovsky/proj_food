@@ -39,7 +39,7 @@ function forms(formSelector, modalTimerId) {
             // const obj = {a: 23, b: 24};
             // console.log(Object.entries(obj));
 
-            // Fetch request
+            // Initial post request
             postData('http://localhost:3000/requests', json)
                 .then(data => {
                     console.log(data);
@@ -53,8 +53,7 @@ function forms(formSelector, modalTimerId) {
         });
     }
 
-    //спинер + диалогом
-
+    //spinner + dialog window
     function showThanksModal(message) {
         const prevModalDialog = document.querySelector('.modal__dialog');
 
@@ -78,5 +77,4 @@ function forms(formSelector, modalTimerId) {
         }, 2000);
     }
 }
-
 export default forms;

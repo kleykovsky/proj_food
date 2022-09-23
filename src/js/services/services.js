@@ -1,3 +1,5 @@
+// Get & Post requests on server
+    //Post fetch request
 const postData = async (url, data) => {
         const res = await fetch(url, {
             method: 'POST',
@@ -8,7 +10,7 @@ const postData = async (url, data) => {
         });
         return await res.json();
     };
-
+    //Get requests
 async function getResource(url) {
     let res = await fetch(url);
     if (!res.ok) {
@@ -16,6 +18,5 @@ async function getResource(url) {
     }
     return await res.json();
 }
-
 export {postData};
 export {getResource};
