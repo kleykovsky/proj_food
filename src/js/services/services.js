@@ -10,6 +10,7 @@ const postData = async (url, data) => {
         });
         return await res.json();
     };
+
     //Get requests
 async function getResource(url) {
     let res = await fetch(url);
